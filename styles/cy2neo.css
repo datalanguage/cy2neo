@@ -7,33 +7,31 @@ svg {
   height:auto;
 }
 
+#apiKey {
+   position: relative;
+   display: inline-block;
+   z-index: 100;
+   width: 25em;
+}
+
+#clientId {
+   position: relative;
+   display: inline-block;
+   z-index: 100;
+   width: 25em;
+}
+
+#clientSecret {
+   position: relative;
+   display: inline-block;
+   z-index: 100;
+   width: 25em;
+}
+
 #execute {
-   font-size:30px;
-   position:absolute;
-   top: 0.6em;
-   right: 10em;
+   font-size:35px;
+   display: inline-block;
+   vertical-align: middle;
+   margin-left: 0.2em;
 }
 
-#neo4jUrl {
-   position:absolute;
-   right: 5px;
-   top: 1em;
-   z-index: 100;
-   width: 20em;
-}
-
-#neo4jUser {
-   position:absolute;
-   right: 9em;
-   top: 4em;
-   z-index: 100;
-   width: 8em;
-}
-
-#neo4jPass {
-   position:absolute;
-   right: 5px;
-   top: 4em;
-   z-index: 100;
-   width: 8em;
-}

@@ -68,6 +68,7 @@ function props(cell) {
 function renderResult(id, data) {
     if (!data || !data.length) return;
     var result = convertResult(data);
+    $("#" + id).empty();
     var table = $('<table cellpadding="0" cellspacing="0" border="0" width="100%"></table>').appendTo($("#" + id));
     var large = result.data.length > 10;
     var dataTable = table.dataTable({

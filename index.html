@@ -12,32 +12,31 @@
 </head>
 <body>
   <div>
-  <input class="form-control" type="url" value="http://localhost:7474" id="neo4jUrl"/><br/>
-  <input class="form-control" type="text" size="8" value="neo4j" id="neo4jUser"/>
-  <input class="form-control" type="password" size="8" placeholder="password" value="test" id="neo4jPass"/><br/>
+  <input class="form-control" type="text" value="api-key" id="apiKey"/>
+  <input class="form-control" type="text" value="client-id" id="clientId"/>
+  <input class="form-control" type="text" value="client-secret" id="clientSecret"/>
+  <a href="#" title="Execute" id="execute"><i class="fa fa-play-circle-o"></i></a>
   <textarea name="cypher" id="cypher" rows="4" cols="120" data-lang="cypher" class="code form-control">
   MATCH (n)-[r]->(m)
   RETURN n,r,m
   LIMIT 50;
   </textarea>
-  <a href="#" title="Execute" id="execute"><i class="fa fa-play-circle-o"></i></a>
   </div>
 
 <div role="tabpanel">
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#graph" aria-controls="home" role="tab" data-toggle="tab">Graph</a></li>
-    <li role="presentation"><a href="#table" aria-controls="table" role="tab" data-toggle="tab">Table</a></li>
+    <li role="presentation" class="active"><a href="#table" aria-controls="table" role="tab" data-toggle="tab">Table</a></li>
+    <li role="presentation"><a href="#graph" aria-controls="home" role="tab" data-toggle="tab">Graph</a></li>
   </ul>
-
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="graph">
-    	<div class="tab-pane active" id="graph">&nbsp;</div>
+    <div role="tabpanel" class="tab-pane active" id="table">
+      <div class="tab-pane active" id="datatable"></div>
     </div>
-    <div role="tabpanel" class="tab-pane" id="table">
-    	<div id="datatable"></div>
+    <div role="tabpanel" class="tab-pane" id="graph">
+    	<div id="graph">&nbsp;</div>
     </div>
   </div>
 
@@ -66,8 +65,8 @@
     $(document).ready(function() {
 		//todo dynamic configuration
 		var config = {}
-	    var connection = function() { return {url:$("#neo4jUrl").val(), user:$("#neo4jUser").val(),pass:$("#neo4jPass").val()}; }
-		new Cy2NeoD3(config,"graph","datatable","cypher","execute", connection , true);
+	  var credsReader = function() { return { apiKey:$("#apiKey").val(), clientId:$("#clientId").val(), clientSecret:$("#clientSecret").val() }; }
+		new Cy2NeoD3(config,"graph","datatable","cypher","execute", credsReader , true);
 	});
 </script>
 </body>

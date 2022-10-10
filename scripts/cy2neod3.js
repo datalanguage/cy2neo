@@ -1,4 +1,4 @@
-function Cy2NeoD3(config, graphId, tableId, sourceId, execId, urlSource, renderGraph, cbResult) {
+function Cy2NeoD3(config, graphId, tableId, sourceId, execId, credsReader, renderGraph, cbResult) {
     function createEditor() {
 		return CodeMirror.fromTextArea(document.getElementById(sourceId), {
 		  parserfile: ["codemirror-cypher.js"],
@@ -11,7 +11,7 @@ function Cy2NeoD3(config, graphId, tableId, sourceId, execId, urlSource, renderG
 		});
     }
     var neod3 = new Neod3Renderer();
-	var neo = new Neo(urlSource);
+	var neo = new Neo(credsReader);
     var editor = createEditor();
 	$("#"+execId).click(function(evt) {
 		try {
